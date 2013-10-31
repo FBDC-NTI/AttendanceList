@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">List de Presença - FBDC</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_classe_list">Classes</string>
+    <string name="title_classe_detail">Classe Detail</string>
+
+</resources>

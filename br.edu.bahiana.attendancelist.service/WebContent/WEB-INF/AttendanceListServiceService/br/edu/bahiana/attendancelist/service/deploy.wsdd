@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from AttendanceListServiceService WSDL service -->
+
+  <service name="AttendanceListService" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://service.attendancelist.bahiana.edu.br"/>
+      <parameter name="wsdlServiceElement" value="AttendanceListServiceService"/>
+      <parameter name="schemaQualified" value="http://service.attendancelist.bahiana.edu.br"/>
+      <parameter name="wsdlServicePort" value="AttendanceListService"/>
+      <parameter name="className" value="br.edu.bahiana.attendancelist.service.AttendanceListService"/>
+      <parameter name="wsdlPortType" value="AttendanceListService"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://service.attendancelist.bahiana.edu.br" xmlns:retNS="http://service.attendancelist.bahiana.edu.br" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="logIn" qname="operNS:logIn" returnQName="retNS:logInReturn" returnType="rtns:long" soapAction="">
+        <parameter xmlns:pns="http://service.attendancelist.bahiana.edu.br" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:username" type="tns:string"/>
+        <parameter xmlns:pns="http://service.attendancelist.bahiana.edu.br" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:password" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://service.attendancelist.bahiana.edu.br" xmlns:retNS="http://service.attendancelist.bahiana.edu.br" xmlns:rtns="http://service.attendancelist.bahiana.edu.br" name="getScholarshipPeriods" qname="operNS:getScholarshipPeriods" returnQName="retNS:getScholarshipPeriodsReturn" returnType="rtns:GetScholarshipPeriodsResponse" soapAction="">
+        <parameter xmlns:pns="http://service.attendancelist.bahiana.edu.br" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:teacherID" type="tns:long"/>
+      </operation>
+      <parameter name="allowedMethods" value="getScholarshipPeriods logIn"/>
+
+      <typeMapping xmlns:ns="http://service.attendancelist.bahiana.edu.br" qname="ns:ScholarshipPeriodContract" type="java:br.edu.bahiana.attendancelist.service.ScholarshipPeriodContract" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://service.attendancelist.bahiana.edu.br" qname="ns:DefaultContract" type="java:br.edu.bahiana.attendancelist.service.DefaultContract" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://service.attendancelist.bahiana.edu.br" qname="ns:DefaultResponse" type="java:br.edu.bahiana.attendancelist.service.DefaultResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <arrayMapping xmlns:ns="http://service.attendancelist.bahiana.edu.br" xmlns:cmp-ns="http://service.attendancelist.bahiana.edu.br" qname="ns:ArrayOfScholarshipPeriodContract" type="java:br.edu.bahiana.attendancelist.service.ScholarshipPeriodContract[]" innerType="cmp-ns:ScholarshipPeriodContract" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://service.attendancelist.bahiana.edu.br" qname="ns:GetScholarshipPeriodsResponse" type="java:br.edu.bahiana.attendancelist.service.GetScholarshipPeriodsResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+  </service>
+</deployment>

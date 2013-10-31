@@ -1,0 +1,38 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!-- hibernate dialect -->
+        <property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
+        <property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+        <property name="hibernate.connection.url">jdbc:sqlserver://boipeba:59508;databaseName=diario3</property>
+        <property name="hibernate.connection.username">diarioadm3</property>
+        <property name="hibernate.connection.password">diarioadm3</property>
+        <property name="transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
+
+        <!-- Automatic schema creation (begin) === -->
+        <!-- property name="hibernate.hbm2ddl.auto">false</property-->
+
+
+        <!-- Simple memory-only cache -->
+        <property name="hibernate.cache.provider_class">org.hibernate.cache.HashtableCacheProvider</property>
+
+        <!-- Enable Hibernate's automatic session context management -->
+        <property name="current_session_context_class">thread</property>
+
+        <!-- ############################################ -->
+        <!-- # mapping files with external dependencies # -->
+        <!-- ############################################ -->
+
+        <mapping resource="br/edu/bahiana/attendancelist/data/mapping/Person.hbm.xml" />
+        <mapping resource="br/edu/bahiana/attendancelist/data/mapping/CurricularActivitySubject.hbm.xml" />
+        <mapping resource="br/edu/bahiana/attendancelist/data/mapping/CurricularActivity.hbm.xml" />
+        <mapping resource="br/edu/bahiana/attendancelist/data/mapping/ClassGroup.hbm.xml" />
+        <mapping resource="br/edu/bahiana/attendancelist/data/mapping/Class.hbm.xml" />
+        <mapping resource="br/edu/bahiana/attendancelist/data/mapping/ScholarshipPeriod.hbm.xml" />
+        <mapping resource="br/edu/bahiana/attendancelist/data/mapping/Course.hbm.xml" />
+        
+
+    </session-factory>
+</hibernate-configuration>

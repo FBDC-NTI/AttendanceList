@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tecnotrends.com.br/webservices" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tecnotrends.com.br/webservices" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tecnotrends.com.br/webservices">
+      <s:element name="AutenticarUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="asUser" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="asPassWord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AutenticarUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AutenticarUsuarioResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="NotificarDestinatarios">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="asProduto" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="aoArgumentos" type="tns:ArrayOfAnyType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfAnyType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="anyType" nillable="true" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="NotificarDestinatariosResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="Dispatch">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="asCommand" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DispatchResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DispatchResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AutenticarUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:AutenticarUsuario" />
+  </wsdl:message>
+  <wsdl:message name="AutenticarUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:AutenticarUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="NotificarDestinatariosSoapIn">
+    <wsdl:part name="parameters" element="tns:NotificarDestinatarios" />
+  </wsdl:message>
+  <wsdl:message name="NotificarDestinatariosSoapOut">
+    <wsdl:part name="parameters" element="tns:NotificarDestinatariosResponse" />
+  </wsdl:message>
+  <wsdl:message name="DispatchSoapIn">
+    <wsdl:part name="parameters" element="tns:Dispatch" />
+  </wsdl:message>
+  <wsdl:message name="DispatchSoapOut">
+    <wsdl:part name="parameters" element="tns:DispatchResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ServicesSoap">
+    <wsdl:operation name="AutenticarUsuario">
+      <wsdl:input message="tns:AutenticarUsuarioSoapIn" />
+      <wsdl:output message="tns:AutenticarUsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="NotificarDestinatarios">
+      <wsdl:input message="tns:NotificarDestinatariosSoapIn" />
+      <wsdl:output message="tns:NotificarDestinatariosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Dispatch">
+      <wsdl:input message="tns:DispatchSoapIn" />
+      <wsdl:output message="tns:DispatchSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServicesSoap" type="tns:ServicesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AutenticarUsuario">
+      <soap:operation soapAction="http://tecnotrends.com.br/webservices/AutenticarUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NotificarDestinatarios">
+      <soap:operation soapAction="http://tecnotrends.com.br/webservices/NotificarDestinatarios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Dispatch">
+      <soap:operation soapAction="http://tecnotrends.com.br/webservices/Dispatch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServicesSoap12" type="tns:ServicesSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AutenticarUsuario">
+      <soap12:operation soapAction="http://tecnotrends.com.br/webservices/AutenticarUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NotificarDestinatarios">
+      <soap12:operation soapAction="http://tecnotrends.com.br/webservices/NotificarDestinatarios" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Dispatch">
+      <soap12:operation soapAction="http://tecnotrends.com.br/webservices/Dispatch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Services">
+    <wsdl:port name="ServicesSoap" binding="tns:ServicesSoap">
+      <soap:address location="http://10.71.50.11/PortalDispatcher/Services.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServicesSoap12" binding="tns:ServicesSoap12">
+      <soap12:address location="http://10.71.50.11/PortalDispatcher/Services.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

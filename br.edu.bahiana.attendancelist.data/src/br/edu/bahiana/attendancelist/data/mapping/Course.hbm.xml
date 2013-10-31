@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="br.edu.bahiana.attendancelist.core.businessclasses">
+	<class name="Course" table="CRS_CURSO">
+		<id name="ID" column="crs_id_curso">
+			<generator class="increment" />
+		</id>
+		<property name="name">
+			<column name="crs_nm_resumido"  />
+		</property>		
+		<many-to-one name="scholarshipStartPeriod" column="crs_id_periodo_letivo_inicio" />
+	</class>
+
+</hibernate-mapping>

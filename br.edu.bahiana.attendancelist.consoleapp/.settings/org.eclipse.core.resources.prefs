@@ -1,0 +1,12 @@
+eclipse.preferences.version=1
+encoding//src/br/com/tecnotrends/webservices/AutenticarUsuario.java=UTF-8
+encoding//src/br/com/tecnotrends/webservices/AutenticarUsuarioResponse.java=UTF-8
+encoding//src/br/com/tecnotrends/webservices/Dispatch.java=UTF-8
+encoding//src/br/com/tecnotrends/webservices/DispatchResponse.java=UTF-8
+encoding//src/br/com/tecnotrends/webservices/NotificarDestinatarios.java=UTF-8
+encoding//src/br/com/tecnotrends/webservices/NotificarDestinatariosResponse.java=UTF-8
+encoding//src/br/com/tecnotrends/webservices/Services.java=UTF-8
+encoding//src/br/com/tecnotrends/webservices/ServicesLocator.java=UTF-8
+encoding//src/br/com/tecnotrends/webservices/ServicesSoap.java=UTF-8
+encoding//src/br/com/tecnotrends/webservices/ServicesSoap12Stub.java=UTF-8
+encoding//src/br/com/tecnotrends/webservices/ServicesSoapStub.java=UTF-8

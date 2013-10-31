@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="br.edu.bahiana.attendancelist.core.businessclasses">
+	<class name="ScholarshipPeriod" table="PEL_PERIODO_LETIVO">
+		<id name="ID" column="pel_id_periodo_letivo">
+			<generator class="increment" />
+		</id>
+		<property name="historicDescription">
+			<column name="pel_ds_historico"  />
+		</property>		
+	</class>
+
+</hibernate-mapping>

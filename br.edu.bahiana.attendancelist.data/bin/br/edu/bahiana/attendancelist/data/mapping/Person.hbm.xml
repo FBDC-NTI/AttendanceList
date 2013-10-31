@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="br.edu.bahiana.attendancelist.core.businessclasses">
+	<class name="Person" table="PES_PESSOA">
+		<id name="ID" column="pes_id_pessoa">
+			<generator class="increment" />
+		</id>
+		<discriminator column="pes_tp_pessoa" type="string" />
+		<property name="name">
+			<column name="pes_nm_pessoa" length="255" not-null="true" />
+		</property>
+		<joined-subclass name="NaturalPerson" extends="Person"
+			table="PEF_PESSOA_FISICA">
+
+			<key column="pef_id_pessoa" />
+			<joined-subclass name="Teacher" extends="NaturalPerson"
+			table="PRO_PROFESSOR">
+
+			<key column="pro_id_pessoa" />
+
+			<bag name="curricularActivitiesSubjects" table="AAC_ASSUNTO_ATIVIDADE_CURRICULAR" lazy="false">
+				<key column="aac_id_pessoa_professor" />
+				<one-to-many class="CurricularActivitySubject" />
+				
+			</bag>
+			<bag name="classGroups" table="PRC_PROFESSOR_CLASSE" lazy="false">
+				<key column="prc_id_pessoa" />
+				<many-to-many class="ClassGroup" column="prc_id_classe" />
+			</bag>
+		</joined-subclass>
+		</joined-subclass>
+	</class>
+
+</hibernate-mapping>

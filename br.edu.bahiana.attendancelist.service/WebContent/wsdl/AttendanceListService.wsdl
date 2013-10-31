@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://service.attendancelist.bahiana.edu.br" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://service.attendancelist.bahiana.edu.br" xmlns:intf="http://service.attendancelist.bahiana.edu.br" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://service.attendancelist.bahiana.edu.br" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="logIn">
+    <complexType>
+     <sequence>
+      <element name="username" type="xsd:string"/>
+      <element name="password" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="logInResponse">
+    <complexType>
+     <sequence>
+      <element name="logInReturn" type="xsd:long"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getScholarshipPeriods">
+    <complexType>
+     <sequence>
+      <element name="teacherID" type="xsd:long"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getScholarshipPeriodsResponse">
+    <complexType>
+     <sequence>
+      <element name="getScholarshipPeriodsReturn" type="impl:GetScholarshipPeriodsResponse"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="DefaultResponse">
+    <sequence>
+     <element name="errorMessage" nillable="true" type="xsd:string"/>
+     <element name="errorNumber" type="xsd:long"/>
+    </sequence>
+   </complexType>
+   <complexType name="DefaultContract">
+    <sequence>
+     <element name="ID" type="xsd:long"/>
+    </sequence>
+   </complexType>
+   <complexType name="ScholarshipPeriodContract">
+    <complexContent>
+     <extension base="impl:DefaultContract">
+      <sequence>
+       <element name="historyDescription" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOfScholarshipPeriodContract">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:ScholarshipPeriodContract"/>
+    </sequence>
+   </complexType>
+   <complexType name="GetScholarshipPeriodsResponse">
+    <complexContent>
+     <extension base="impl:DefaultResponse">
+      <sequence>
+       <element name="items" nillable="true" type="impl:ArrayOfScholarshipPeriodContract"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="getScholarshipPeriodsResponse">
+
+      <wsdl:part element="impl:getScholarshipPeriodsResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="logInResponse">
+
+      <wsdl:part element="impl:logInResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="logInRequest">
+
+      <wsdl:part element="impl:logIn" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getScholarshipPeriodsRequest">
+
+      <wsdl:part element="impl:getScholarshipPeriods" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="AttendanceListService">
+
+      <wsdl:operation name="logIn">
+
+         <wsdl:input message="impl:logInRequest" name="logInRequest"/>
+
+         <wsdl:output message="impl:logInResponse" name="logInResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getScholarshipPeriods">
+
+         <wsdl:input message="impl:getScholarshipPeriodsRequest" name="getScholarshipPeriodsRequest"/>
+
+         <wsdl:output message="impl:getScholarshipPeriodsResponse" name="getScholarshipPeriodsResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="AttendanceListServiceSoapBinding" type="impl:AttendanceListService">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="logIn">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="logInRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="logInResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getScholarshipPeriods">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getScholarshipPeriodsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getScholarshipPeriodsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="AttendanceListServiceService">
+
+      <wsdl:port binding="impl:AttendanceListServiceSoapBinding" name="AttendanceListService">
+
+         <wsdlsoap:address location="http://10.71.10.124:8080/br.edu.bahiana.attendancelist.service/services/AttendanceListService"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

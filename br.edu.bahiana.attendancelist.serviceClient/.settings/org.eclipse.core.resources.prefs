@@ -1,0 +1,9 @@
+eclipse.preferences.version=1
+encoding//src/br/edu/bahiana/attendancelist/service/AttendanceListService.java=UTF-8
+encoding//src/br/edu/bahiana/attendancelist/service/AttendanceListServiceService.java=UTF-8
+encoding//src/br/edu/bahiana/attendancelist/service/AttendanceListServiceServiceLocator.java=UTF-8
+encoding//src/br/edu/bahiana/attendancelist/service/AttendanceListServiceSoapBindingStub.java=UTF-8
+encoding//src/br/edu/bahiana/attendancelist/service/DefaultContract.java=UTF-8
+encoding//src/br/edu/bahiana/attendancelist/service/DefaultResponse.java=UTF-8
+encoding//src/br/edu/bahiana/attendancelist/service/GetScholarshipPeriodsResponse.java=UTF-8
+encoding//src/br/edu/bahiana/attendancelist/service/ScholarshipPeriodContract.java=UTF-8

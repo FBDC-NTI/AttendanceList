@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="br.edu.bahiana.attendancelist.core.businessclasses">
+	<class name="CurricularActivitySubject" table="AAC_ASSUNTO_ATIVIDADE_CURRICULAR">
+		<id name="ID" column="aac_id_assunto_atividade_curricular">
+			<generator class="increment" />
+		</id>		
+		<many-to-one name="curricularActivity" column="aac_id_atividade_curricular" />
+		
+	</class>
+
+</hibernate-mapping>

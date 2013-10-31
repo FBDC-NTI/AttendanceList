@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="br.edu.bahiana.attendancelist.core.businessclasses">
+	<class name="ClassGroup" table="CLA_CLASSE">
+		<id name="ID" column="cla_id_classe">
+			<generator class="increment" />
+		</id>
+		<bag name="classes" table="AUL_AULA" lazy="false">
+				<key column="aul_id_classe" />
+				<one-to-many class="Class" />
+			</bag>
+			<many-to-one name="scholarshipPeriod" column="cla_id_periodo_letivo" />
+			<bag name="teachers" table="PRC_PROFESSOR_CLASSE" lazy="false">
+				<key column="prc_id_classe" />
+				<many-to-many class="Teacher" column="prc_id_pessoa" />
+			</bag>
+	</class>
+
+</hibernate-mapping>
